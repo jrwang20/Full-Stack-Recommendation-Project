@@ -1,5 +1,13 @@
 # Full-Stack-Recommendation-Project
 
+## Introduction
+This project is a full-stack recommendation web application.
+
+There are three main functions
+1. Search: Users can search events nearby based on their location. 
+2. Save: Users can save the events if they like them.
+3. Recommend: The recommendation system will recommend the nearby events based on users' favorite items and searching history.
+
 ## Data
 The data is actually what you can see in the front-end pages. 
 
