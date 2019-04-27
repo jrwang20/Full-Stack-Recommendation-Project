@@ -11,3 +11,6 @@ There are three main functions
 ## Portfolio and report
 Detailed project information can be seen here
 https://github.com/jrwang8/Full-Stack-Recommendation-Project/blob/master/Portfolio/Portfolio%20%26%20Project%20report.pdf
+
+## code structure
+The front-end codes are in the WebContent folder; the back-end codes are in the src folder; the embedded SQL codes are in the MySQLConnection Class https://github.com/jrwang8/Full-Stack-Recommendation-Project/blob/master/src/db/mysql/MySQLConnection.java
