@@ -27,7 +27,7 @@ public class MySQLTableCreation {
 			//Step 2 Drop tables in case they exist.
 			Statement stmt = conn.createStatement();
 			String sql = "DROP TABLE IF EXISTS categories";
-			stmt.executeUpdate(sql);//这里executeUpdate可以返回有多少行被更新（当然这里没有返回）
+			stmt.executeUpdate(sql);
 			
 			sql = "DROP TABLE IF EXISTS history";
 			stmt.executeUpdate(sql);
