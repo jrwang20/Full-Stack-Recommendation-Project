@@ -64,7 +64,6 @@ public class MySQLConnection implements DBConnection {
 		
 		try {
 			String sql = "DELETE FROM history WHERE user_id = ? AND item_id = ?";
-			//对于delete来讲，有可能没有符合条件的项，那么就不会删除，因此不需要IGNORE
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			for(String itemId : itemIds) {
 				stmt.setString(1, userId);
@@ -102,7 +101,7 @@ public class MySQLConnection implements DBConnection {
 
 	@Override
 	public Set<Item> getFavoriteItems(String userId) {
-		if(conn == null) { //这里的connection实际上就是这个class最上面创建的那个
+		if(conn == null) { 
 			return new HashSet<>();
 		}
 		
@@ -115,17 +114,17 @@ public class MySQLConnection implements DBConnection {
 			for(String itemId : itemIds) {
 				stmt.setString(1, itemId);
 				
-				ResultSet rs = stmt.executeQuery();//之前的execute返回的是boolean，这里返回的是ResultSet
+				ResultSet rs = stmt.executeQuery();
 				
 				ItemBuilder builder = new ItemBuilder();
 				
-				while(rs.next()) { //这里的rs是个iterator，所以用这种写法
+				while(rs.next()) { 
 					builder.setItemId(rs.getString("item_id"));
 					builder.setName(rs.getString("name"));
 					builder.setAddress(rs.getString("address"));
 					builder.setImageUrl(rs.getString("image_url"));
 					builder.setUrl(rs.getString("url"));
-					builder.setCategories(getCategories(itemId)); //这里有所不同，categories信息并不在items表里，所以用一个自己写的method
+					builder.setCategories(getCategories(itemId)); 
 					builder.setDistance(rs.getDouble("distance"));
 					builder.setRating(rs.getDouble("rating"));
 					
@@ -150,7 +149,7 @@ public class MySQLConnection implements DBConnection {
 		try {
 			String sql = "SELECT category FROM categories WHERE item_id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, itemId); //这里是把method的parameter传到stmt里面
+			stmt.setString(1, itemId); 
 			
 			ResultSet rs = stmt.executeQuery();
 			
