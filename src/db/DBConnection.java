@@ -6,7 +6,6 @@ import java.util.Set;
 import entity.Item;
 
 public interface DBConnection {
-	// 不管后台是什么数据库，这里的interface是统一的
 	/**
 	 * Close the connection.
 	 */
