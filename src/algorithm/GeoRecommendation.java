@@ -28,8 +28,6 @@ public class GeoRecommendation {
 		for(String itemId : favoriteItemIds) {
 			Set<String> categories = conn.getCategories(itemId);
 			for(String category : categories) {
-				//如果存在这个category，那么增加；否则进行default
-				//这里可以直接用getOrDefault方法
 				allCategories.put(category, allCategories.getOrDefault(category, 0) + 1);
 			}
 		}
@@ -39,8 +37,7 @@ public class GeoRecommendation {
 		Collections.sort(categoryList, new Comparator<Entry<String, Integer>>() {
 			@Override
 			public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
-				//这里的Integer.compare()方法是最保险的方法去比较两个int的大小
-				return Integer.compare(o2.getValue(), o1.getValue()); //这里是降序，所以o2在前
+				return Integer.compare(o2.getValue(), o1.getValue());
 			}
 		});
 		
@@ -59,11 +56,11 @@ public class GeoRecommendation {
 			Collections.sort(filteredItems, new Comparator<Item>() {
 				@Override
 				public int compare(Item item1, Item item2) {
-					return Double.compare(item1.getDistance(), item2.getDistance()); //这里是升序，所以o1在前
+					return Double.compare(item1.getDistance(), item2.getDistance()); 
 				}
 			});
 			
-			visitedItems.addAll(items); //这个是为了不要重复推荐的dedup的Set
+			visitedItems.addAll(items); 
 			recommendedItems.addAll(filteredItems);
 		}
 		return recommendedItems;
